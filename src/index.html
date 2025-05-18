@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="/favicon.png" />
+    <title>Stories App</title>
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    
+    <script>
+      window.addEventListener('load', function() {
+        if (typeof L === 'undefined') {
+          console.error('Leaflet library failed to load! Trying to reload...');
+          
+          const script = document.createElement('script');
+          script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+          script.integrity = 'sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=';
+          script.crossOrigin = '';
+          script.onload = function() {
+            console.log('Leaflet library loaded successfully on retry');
+          };
+          document.head.appendChild(script);
+        } else {
+          console.log('Leaflet library loaded successfully');
+        }
+      });
+    </script>
+
+    <script type="module" src="/scripts/index.js"></script>
+    <link rel="manifest" href="/manifest.json" crossorigin="use-credentials" />
+  </head>
+  <body>
+    <header>
+      <div class="main-header container">
+        <a href="#/" class="skip-link">Skip to content</a>
+        <a class="brand-name" href="#/">Stories App</a>
+
+        <nav aria-label="Main navigation" id="navigation-drawer" class="navigation-drawer">
+          <ul id="nav-list" class="nav-list">
+            <li><a href="#/">Beranda</a></li>
+            <li><a href="#/about">About</a></li>
+            <li><a href="#/login" id="login-link">Login</a></li>
+            <li><a href="#/addstory">Tambah Story</a></li>
+          </ul>
+        </nav>
+
+        <button id="drawer-button" class="drawer-button">☰</button>
+        <button id="push-toggle-btn">Subscribe</button>
+      </div>
+    </header>
+
+    <main id="main-content" class="main-content"></main>
+  </body>
+</html>
